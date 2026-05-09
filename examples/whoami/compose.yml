@@ -1,0 +1,15 @@
+services:
+  whoami:
+    image: traefik/whoami:v1.11.0
+    networks:
+      - tsp-ingress
+    deploy:
+      labels:
+        tsp.name: whoami
+        tsp.whoami.https.443: 80
+      replicas: 1
+    restart: unless-stopped
+
+networks:
+  ts-ingress:
+    external: true
